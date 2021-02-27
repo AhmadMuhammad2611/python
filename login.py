@@ -9,13 +9,14 @@ def log():
     file = open("login.txt", "r")
     for row in file:
         field = row.split(",")
+        userFname = field[0]
         newemail = field[2]
         password = field[3]
         lastchar = len(password)-1
         password = password[0:lastchar]
 
         if username1 == newemail and password1 == password:
-            print("Hello", newemail)
+            print("Hello", userFname)
             project.proj()
             break
     else:

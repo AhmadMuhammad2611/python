@@ -13,17 +13,17 @@ def proj():
         title = input("Please enter a title: ")
         details = input("Please enter a details: ")
         total = input("your total: ")
-        dayDate = int(input("enter day number: "))
-        monDate = int(input("enter month number: "))
-        while datetime.datetime(year=2021, month=monDate, day=dayDate) <= datetime.datetime.now():
-            dayDate = int(input("enter day number: "))
-            monDate = int(input("enter month number: "))
+        startDay = int(input("enter day number: "))
+        startMon = int(input("enter month number: "))
+        while datetime.datetime(year=2021, month=startMon, day=startDay) <= datetime.datetime.now():
+            startDay = int(input("enter day number: "))
+            startMon = int(input("enter month number: "))
         endDay = int(input("enter end day number: "))
         endMon = int(input("enter end month number: "))
-        while datetime.datetime(year=2021, month=endMon, day=endDay) <= datetime.datetime.now() or datetime.datetime(year=2021, month=endMon, day=endDay) <= datetime.datetime(year=2021, month=monDate, day=dayDate):
+        while datetime.datetime(year=2021, month=endMon, day=endDay) <= datetime.datetime.now() or datetime.datetime(year=2021, month=endMon, day=endDay) <= datetime.datetime(year=2021, month=startMon, day=startDay):
             endDay = int(input("enter end day number: "))
             endMon = int(input("enter end month number: "))
-        global file
+
         file = open("project.txt", "a")
         file.write(title)
         file.write(",")
@@ -31,13 +31,15 @@ def proj():
         file.write(",")
         file.write(total)
         file.write(",")
-        file.write(str(dayDate)+"-"+str(monDate))
+        file.write(str(startDay)+"-"+str(startMon))
         file.write(",")
         file.write(str(endDay)+"-"+str(endMon))
         file.write("\n")
         file.close()
         proj()
-    # elif yourchoice == "2":
-    #     for row in file:
-    #         field = row.split(",")
-    #     print(field)
+    elif yourchoice == "2":
+        file = open("project.txt", "r")
+        for row in file:
+            field = row.split(",")
+            print(field)
+        proj()
